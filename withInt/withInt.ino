@@ -11,7 +11,7 @@ void setup()
 {
     Serial.begin(9600);                                                // Start serial communication at 9600 baud rate
     pinMode(sensorPin, INPUT);                                         // Set the sensorPin as an input pin
-    attachInterrupt(digitalPinToInterrupt(sensorPin), count, FALLING); // Attach interrupt to sensorPin
+    attachInterrupt(digitalPinToInterrupt(sensorPin), count, CHANGE); // Attach interrupt to sensorPin
 }
 
 void loop()
