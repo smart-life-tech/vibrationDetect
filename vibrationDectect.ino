@@ -1,4 +1,4 @@
-const int sensorPin = 4;
+const int sensorPin = 2;
 
 void setup()
 {
