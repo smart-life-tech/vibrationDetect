@@ -6,7 +6,7 @@ void count()
 {
     vibrationCount++;
 }
-
+unsigned long total=0;
 void setup()
 {
     Serial.begin(9600);                                                // Start serial communication at 9600 baud rate
@@ -36,7 +36,7 @@ void loop()
         Serial.print(frequency);
         Serial.println(" Hz");
 
-        Serial.println("Detected vibration...");
+        //Serial.println("Detected vibration...");
         vibrationCount=0;
     }
 

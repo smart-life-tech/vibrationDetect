@@ -43,7 +43,8 @@ void loop()
 
         // Calculate the magnitude of acceleration
         float magnitude = sqrt(ax * ax + ay * ay + az * az) / 16384.0; // 16384 is the LSB sensitivity for +/- 2g
-
+        Serial.print("magnitude :");
+        Serial.println(magnitude);
         // Check if the magnitude exceeds the threshold
         if (magnitude > threshold)
         {
@@ -53,29 +54,20 @@ void loop()
         delay(10); // Adjust delay as needed to control sampling rate
     }
 
-    // Calculate frequency in Hz and per minute
-    float frequencyHz = vibrationCount / 1.0;         // Counts per second
-    float frequencyPerMinute = vibrationCount * 60.0; // Counts per minute
-
-    // Print the frequency to the Serial Monitor
-    Serial.print("Frequency: ");
-    Serial.print(frequencyHz);
-    Serial.print(" Hz, ");
-    Serial.print(frequencyPerMinute);
-    Serial.println(" counts per minute");
-
     // Indicate vibration with LED and buzzer if frequency is detected
     if (vibrationCount > 0)
     {
         Serial.println("Detected vibration...");
-        digitalWrite(ledPin, HIGH); // Turn on the LED
-        tone(buzzerPin, 1000);      // Play a 1kHz tone on the buzzer
-    }
-    else
-    {
-        Serial.println("...");
-        digitalWrite(ledPin, LOW); // Turn off the LED
-        noTone(buzzerPin);         // Stop playing any tone on the buzzer
+        // Calculate frequency in Hz and per minute
+        float frequencyHz = vibrationCount / 1.0;         // Counts per second
+        float frequencyPerMinute = vibrationCount * 60.0; // Counts per minute
+
+        // Print the frequency to the Serial Monitor
+        Serial.print("Frequency: ");
+        Serial.print(frequencyHz);
+        Serial.print(" Hz, ");
+        Serial.print(frequencyPerMinute);
+        Serial.println(" counts per minute");
     }
 
     // Add a delay to avoid flooding the serial monitor
