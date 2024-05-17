@@ -42,9 +42,9 @@ void loop()
         mpu.getAcceleration(&ax, &ay, &az);
 
         // Calculate the magnitude of acceleration
-        float magnitude = sqrt(ax * ax + ay * ay + az * az) / 163.840; // 16384 is the LSB sensitivity for +/- 2g
-        Serial.print("magnitude :");
-        Serial.println(magnitude);
+        float magnitude = sqrt(ax * ax + ay * ay + az * az) / 1.63840; // 16384 is the LSB sensitivity for +/- 2g
+        //Serial.print("magnitude :");
+        //Serial.println(magnitude);
         // Check if the magnitude exceeds the threshold
         if (magnitude > threshold)
         {
